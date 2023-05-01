@@ -22,6 +22,10 @@ def totient(n):
     if n > 1:
         result -= result // n
     return result
+
+
+
+
 n = int(input("Enter a value for n: "))
 
 
