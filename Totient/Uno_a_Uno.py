@@ -1,4 +1,4 @@
-import timeit
+
 import time
 
 
@@ -24,9 +24,7 @@ def find_numbers(n):
             result.append(i)
     return len(result)
 def mcd(a, b):
-    """
-    Returns the MCD/GCD of two numbers using the Euclidean algorithm
-    """
+    
     while b != 0:
         temp = b
         b = a % b
