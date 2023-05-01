@@ -10,7 +10,7 @@ problema =  "fbdeciahg"\
 
 """
     Convierte un problema en formato cadena a matriz
-    :param problema: Una cadena de 81 digitos.
+    :parametro problema: Una cadena de 81 digitos.
     :return: Una matriz (lista de listas)
     """
 def str_sudoku(problema):
@@ -20,15 +20,15 @@ def str_sudoku(problema):
     for fila in range(9):
         matriz.append(list(problema[fila * 9: (fila + 1) * 9]))
     return matriz
-
+"""
+    Imprime un sudoku
+    :param sudoku: La matriz (lista de listas)
+    """
 
 
 
 def print_sudoku(sudoku):
-    """
-    Imprime un sudoku
-    :param sudoku: La matriz (lista de listas)
-    """
+    
     for fila in sudoku:
         for columna in fila:
             print(columna, end=" ")
@@ -47,12 +47,7 @@ def cerrada(lista):
     
     return True
 
-""""
-    while not(i>=m):
-           " if lista[i].isalpha():
-               "" i = i+1
-                return True"""
-           
+
     
 
 def revisar9(lista):
