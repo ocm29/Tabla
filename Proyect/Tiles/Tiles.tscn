@@ -1,0 +1,22 @@
+[gd_scene load_steps=4 format=2]
+
+[ext_resource path="res://Cofre.png" type="Texture" id=1]
+[ext_resource path="res://Obstacle.png" type="Texture" id=2]
+[ext_resource path="res://Muro.png" type="Texture" id=3]
+
+[node name="Node2D" type="Node2D"]
+
+[node name="Muro" type="Sprite" parent="."]
+position = Vector2( 62, 14 )
+scale = Vector2( 0.164063, 0.125 )
+texture = ExtResource( 3 )
+
+[node name="Obstacle" type="Sprite" parent="."]
+position = Vector2( 27, 17 )
+scale = Vector2( 0.0347222, 0.0329861 )
+texture = ExtResource( 2 )
+
+[node name="Cofre" type="Sprite" parent="."]
+position = Vector2( 89, 17 )
+scale = Vector2( 0.125, 0.112072 )
+texture = ExtResource( 1 )
