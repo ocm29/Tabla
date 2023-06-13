@@ -3,23 +3,19 @@ extends TileMap
 const BASE_LINE_WIDTH = 4.0
 const DRAW_COLOR = Color.white
 
-# The Tilemap node doesn't have clear bounds so we're defining the map's limits here.
+
 export(Vector2) var map_size = Vector2.ONE * 512
 
 
 
 
-# The path start and end variables use setter methods.
-# You can find them at the bottom of the script.
 var path_start_position = Vector2() setget _set_path_start_position
 var path_end_position = Vector2() setget _set_path_end_position
 
 var _point_path = []
 
-# You can only create an AStar node from code, not from the Scene tab.
 onready var astar_node = AStar.new()
-# get_used_cells_by_id is a method from the TileMap node.
-# Here the id 0 corresponds to the grey tile, the obstacles.
+
 onready var obstacles = get_used_cells_by_id(5)
 onready var _half_cell_size = cell_size / 2
 
@@ -46,8 +42,7 @@ func _draw():
 		last_point = current_point
 
 
-# Loops through all cells within the map's bounds and
-# adds all points to the astar_node, except the obstacles.
+
 func astar_add_walkable_cells(obstacle_list = []):
 	var points_array = []
 	for y in range(map_size.y):
@@ -57,27 +52,18 @@ func astar_add_walkable_cells(obstacle_list = []):
 				continue
 
 			points_array.append(point)
-			# The AStar class references points with indices.
-			# Using a function to calculate the index from a point's coordinates
-			# ensures we always get the same index with the same input point.
+			
 			var point_index = calculate_point_index(point)
-			# AStar works for both 2d and 3d, so we have to convert the point
-			# coordinates from and to Vector3s.
+			
 			astar_node.add_point(point_index, Vector3(point.x, point.y, 0.0))
 	return points_array
 
 
-# Once you added all points to the AStar node, you've got to connect them.
-# The points don't have to be on a grid: you can use this class
-# to create walkable graphs however you'd like.
-# It's a little harder to code at first, but works for 2d, 3d,
-# orthogonal grids, hex grids, tower defense games...
+
 func astar_connect_walkable_cells(points_array):
 	for point in points_array:
 		var point_index = calculate_point_index(point)
-		# For every cell in the map, we check the one to the top, right.
-		# left and bottom of it. If it's in the map and not an obstalce.
-		# We connect the current point with it.
+		
 		var points_relative = PoolVector2Array([
 			point + Vector2.RIGHT,
 			point + Vector2.LEFT,
@@ -152,7 +138,7 @@ func _recalculate_path():
 	update()
 
 
-# Setters for the start and end path values.
+
 func _set_path_start_position(value):
 	if value in obstacles:
 		return
