@@ -76,10 +76,7 @@ func astar_connect_walkable_cells(points_array):
 				continue
 			if not astar_node.has_point(point_relative_index):
 				continue
-			# Note the 3rd argument. It tells the astar_node that we want the
-			# connection to be bilateral: from point A to B and B to A.
-			# If you set this value to false, it becomes a one-way path.
-			# As we loop through all points we can set it to false.
+			
 			astar_node.connect_points(point_index, point_relative_index, true)
 
 
@@ -131,10 +128,9 @@ func _recalculate_path():
 	clear_previous_path_drawing()
 	var start_point_index = calculate_point_index(path_start_position)
 	var end_point_index = calculate_point_index(path_end_position)
-	# This method gives us an array of points. Note you need the start and
-	# end points' indices as input.
+	
 	_point_path = astar_node.get_point_path(start_point_index, end_point_index)
-	# Redraw the lines and circles from the start to the end point.
+	
 	update()
 
 
