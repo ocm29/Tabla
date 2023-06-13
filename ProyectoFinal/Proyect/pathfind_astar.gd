@@ -80,8 +80,6 @@ func astar_connect_walkable_cells(points_array):
 			astar_node.connect_points(point_index, point_relative_index, true)
 
 
-# This is a variation of the method above.
-# It connects cells horizontally, vertically AND diagonally.
 func astar_connect_walkable_cells_diagonal(points_array):
 	for point in points_array:
 		var point_index = calculate_point_index(point)
